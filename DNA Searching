@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node *createLinkedList(int array[], int size);
+int searchingLikedList(struct node *head ,int value);
+struct node
+{
+     int data;
+     struct node *link;
+
+};
+
+int main ()
+{       int v;
+     int arr[]={10,20,50,30,40};
+     struct node *head;
+     head=createLinkedList(arr, 5);
+     printf("Please !!Enter your searching element:");
+          scanf("%d",&v);
+
+     printf("your searching Index number :%d",searchingLikedList(head,v));
+
+     return 0;
+
+
+
+
+
+}
+ int searchingLikedList(struct node *head, int value)
+ {         int position=1;
+        while(head!=NULL)
+        {
+            if(head->data==value)
+            {
+                return position;
+            }
+
+            position++;
+            head=head->link;
+
+        }
+
+        return position = 0;
+
+ }
+
+
+
+struct node *createLinkedList(int array[], int size)
+{
+      struct node *head=NULL, *current =NULL, *temp=NULL;
+       for ( int i = 0; i < size; i++)
+       {      temp= (struct node*)malloc(sizeof(struct node));
+                 temp->data=array[i];
+                 temp->link=NULL;
+             if (head==NULL)
+             {
+                     head=temp;
+                     current=temp;
+             }
+             else
+             {
+                   current->link=temp;
+                   current=current->link;
+             }
+    }
+    return head;
+
+}

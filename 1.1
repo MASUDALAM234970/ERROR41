@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+// Recursive binary search function
+int binarySearch(int arr[], int low, int high, int target) {
+    if (low > high) {
+        // Target not found in array
+        return -1;
+    }
+
+    // Find the middle index
+    int mid = (low + high) / 2;
+
+    if (arr[mid] == target) {
+        // Target found at middle index
+        return mid;
+    } else if (arr[mid] > target) {
+        // Target is in the left half of the array
+        return binarySearch(arr, low, mid - 1, target);
+    } else {
+        // Target is in the right half of the array
+        return binarySearch(arr, mid + 1, high, target);
+    }
+}
+
+// Driver code
+int main() {
+    int arr[] = {10, 30, 50, 70, 80, 90};
+    int n = 6;
+    int target = 70;
+    int index = binarySearch(arr, 0, n - 1 , target);
+    if (index == -1) {
+        printf("Target not found in array.\n");
+    } else {
+        printf("Target found at index %d.\n", index);
+    }
+    return 0;
+}

@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define Max 50
+ int a[Max];
+
+ int top ;
+
+ void initializerStack ();
+    int isEmpty ();
+    int isfull ();
+    int size ();
+    int peack ();
+    int push (int x);
+    int pop ();
+    void display ();
+
+
+int main()
+{
+    int choice,x;
+
+
+     printf("hello my friend");
+
+     while(1)
+     {
+
+         printf("1: push an element on the stack \n");
+         printf("2: Pop an element from the stack \n");
+         printf("3:  Display the top element stack \n");
+         printf("4:  Display All  stack elements \n");
+         printf("5:  Display size of the  stack elements \n");
+         printf("6: Quit \n");
+         printf("Hello my friend choice your yours option");
+         scanf("%d",&choice);
+
+         if(choice==6)
+            break;
+
+            switch(choice)
+            {
+          case 1:
+             printf("please Enter the Element to be pushed");
+             scanf("%d",&x);
+             break;
+          case 2:
+                x= pop ();
+                printf("Popped element is : %d",x);
+              break;
+          case 3:
+              printf("Element at the top is : %d\n",peack);
+              break;
+          case 4:
+
+              display ();
+              break;
+
+          case 5:
+              printf("size of stack = %d\n",size);
+
+              break;
+
+          default :
+
+            printf("Wrong choice \n");
+
+
+            }
+
+                printf("\n");
+
+
+          }
+
+}
+
+        void initializerStack ()
+        {
+            top=-1;
+
+         }
+
+         int size ()
+         {
+             return top+1;
+
+         }
+                int isEmpty ()
+
+                {
+
+                    if(top==-1)
+                    {
+                     return 1;
+                    }
+
+                    else
+                        return 0;
+                }
+                  int isfull ()
+                  {
+                      if(top==Max-1)
+                      {
+                          return 1;
+                      }
+                  }
+
+                    int push(int x)
+
+                 {
+                            if (isfull())
+                            {
+                                printf("Stack Overflow\n");
+                            }
+
+                                      top=top+1;
+
+                    }
+
+                 int pop()
+                 {
+                     int x;
+
+                     if(isEmpty())
+                        printf("Stack Underflow \n");
+                     exit(1);
+                 }
+
+            int peack ()
+          {
+                if(isEmpty)
+            {
+            printf("Stack Underflow \n");
+
+
+            }
+          }
+           void display ()
+
+           {
+
+               int i;
+
+               printf("top=%d\n",top);
+               if (isEmpty())
+
+               {
+                   printf("Stack is : \n\n");
+                   for(i=top; i>=0; i--)
+                   {
+                       printf("%d\n",a[i]);
+                       printf("\n");
+                   }
+               }
+           }
+
+

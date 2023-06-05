@@ -1,3 +1,10 @@
+/*
+  Purpose : To implement a binary searching using an array
+  Date    : 6 June 2023
+  Author  : Error41
+ */
+
+
 #include<stdio.h>
 //#define n 6
 int binary_search(int array [], int low , int high , int target);

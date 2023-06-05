@@ -1,4 +1,8 @@
-
+/*
+  Purpose : To implement a bubble short  using an array
+  Date    : 6 June 2023
+  Author  : Error41
+ */
 #include<stdio.h>
 
 int main()

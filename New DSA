@@ -1,157 +1,149 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define Max 50
- int a[Max];
 
- int top ;
+int a[Max];
+int top;
 
- void initializerStack ();
-    int isEmpty ();
-    int isfull ();
-    int size ();
-    int peack ();
-    int push (int x);
-    int pop ();
-    void display ();
-
+void initializerStack();
+int isEmpty();
+int isFull();
+int size();
+int peek();
+int push(int x);
+int pop();
+void display();
 
 int main()
 {
-    int choice,x;
+    int choice, x;
 
+    initializerStack();
 
-     printf("hello my friend");
+    while (1)
+    {
 
-     while(1)
-     {
+        printf("1: Push an element onto the stack\n");
+        printf("2: Pop an element from the stack\n");
+        printf("3: Display the top element of the stack\n");
+        printf("4: Display all stack elements\n");
+        printf("5: Display the size of the stack\n");
+        printf("6: Quit\n");
+        printf("Hello, please choose an option: ");
+        scanf("%d", &choice);
 
-         printf("1: push an element on the stack \n");
-         printf("2: Pop an element from the stack \n");
-         printf("3:  Display the top element stack \n");
-         printf("4:  Display All  stack elements \n");
-         printf("5:  Display size of the  stack elements \n");
-         printf("6: Quit \n");
-         printf("Hello my friend choice your yours option");
-         scanf("%d",&choice);
-
-         if(choice==6)
+        if (choice == 6)
             break;
 
-            switch(choice)
-            {
-          case 1:
-             printf("please Enter the Element to be pushed");
-             scanf("%d",&x);
-             break;
-          case 2:
-                x= pop ();
-                printf("Popped element is : %d",x);
-              break;
-          case 3:
-              printf("Element at the top is : %d\n",peack);
-              break;
-          case 4:
+        switch (choice)
+        {
+        case 1:
+            printf("Please enter the element to be pushed: ");
+            scanf("%d", &x);
+            push(x);
+            break;
+        case 2:
+            x = pop();
+            printf("Popped element is: %d\n", x);
+            break;
+        case 3:
+            printf("Element at the top is: %d\n", peek());
+            break;
+        case 4:
+            display();
+            break;
+        case 5:
+            printf("Size of stack: %d\n", size());
+            break;
+        default:
+            printf("Sorry!! Wrong choice\n");
+        }
 
-              display ();
-              break;
+        printf("\n");
+    }
 
-          case 5:
-              printf("size of stack = %d\n",size);
-
-              break;
-
-          default :
-
-            printf("Wrong choice \n");
-
-
-            }
-
-                printf("\n");
-
-
-          }
-
+    return 0;
 }
 
-        void initializerStack ()
-        {
-            top=-1;
+void initializerStack()
+{
+    top = -1;
+}
 
-         }
+int size()
+{
+    return top + 1;
+}
 
-         int size ()
-         {
-             return top+1;
+int isEmpty()
+{
+    if (top == -1)
+        return 1;
+    else
+        return 0;
+}
 
-         }
-                int isEmpty ()
+int isFull()
+{
+    if (top == Max - 1)
+        return 1;
+    else
+        return 0;
+}
 
-                {
+int push(int x)
+{
+    if (isFull())
+    {
+        printf("Stack Overflow\n");
+        return -1;
+    }
 
-                    if(top==-1)
-                    {
-                     return 1;
-                    }
+    top = top + 1;
+    a[top] = x;
+    return 0;
+}
 
-                    else
-                        return 0;
-                }
-                  int isfull ()
-                  {
-                      if(top==Max-1)
-                      {
-                          return 1;
-                      }
-                  }
+int pop()
+{
+    int x;
 
-                    int push(int x)
+    if (isEmpty())
+    {
+        printf("Stack Underflow\n");
+        exit(1);
+    }
 
-                 {
-                            if (isfull())
-                            {
-                                printf("Stack Overflow\n");
-                            }
+    x = a[top];
+    top = top - 1;
+    return x;
+}
 
-                                      top=top+1;
+int peek()
+{
+    if (isEmpty())
+    {
+        printf("Stack Underflow\n");
+        exit(1);
+    }
 
-                    }
+    return a[top];
+}
 
-                 int pop()
-                 {
-                     int x;
+void display()
+{
+    int i;
 
-                     if(isEmpty())
-                        printf("Stack Underflow \n");
-                     exit(1);
-                 }
+    printf("Top = %d\n", top);
 
-            int peack ()
-          {
-                if(isEmpty)
-            {
-            printf("Stack Underflow \n");
+    if (isEmpty())
+    {
+        printf("Stack is empty\n");
+        return;
+    }
 
-
-            }
-          }
-           void display ()
-
-           {
-
-               int i;
-
-               printf("top=%d\n",top);
-               if (isEmpty())
-
-               {
-                   printf("Stack is : \n\n");
-                   for(i=top; i>=0; i--)
-                   {
-                       printf("%d\n",a[i]);
-                       printf("\n");
-                   }
-               }
-           }
-
-
+    printf("Stack is not empty:\n");
+    for (i = top; i >= 0; i--)
+        printf("%d\n", a[i]);
+    printf("\n");
+}

@@ -1,0 +1,158 @@
+/*
+  Purpose : To implement a queue using an array
+  Date    : 6 June 2023
+  Author  : Error41
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#define Max 50
+
+int a[Max];
+int front, rear;
+
+void initializeQueue();
+int isEmpty();
+int isFull();
+int size();
+int peek();
+void insert(int x);
+int deleteElement();
+void display();
+
+int main()
+{
+    int choice, x;
+
+    initializeQueue();
+
+    while (1)
+    {
+        printf("1: Insert an element into the queue\n");
+        printf("2: Delete an element from the queue\n");
+        printf("3: Display the element at the front of the queue\n");
+        printf("4: Display all elements in the queue\n");
+        printf("5: Display the size of the queue\n");
+        printf("6: Quit\n");
+        printf("Hello, please choose an option: ");
+        scanf("%d", &choice);
+
+        if (choice == 6)
+            break;
+
+        switch (choice)
+        {
+        case 1:
+            printf("Please enter the element to be inserted: ");
+            scanf("%d", &x);
+            insert(x);
+            break;
+        case 2:
+            x = deleteElement();
+            printf("Element deleted is: %d\n", x);
+            break;
+        case 3:
+            printf("Element at the front is: %d\n", peek());
+            break;
+        case 4:
+            display();
+            break;
+        case 5:
+            printf("Size of the queue: %d\n", size());
+            break;
+        default:
+            printf("Sorry!! Wrong choice\n");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+
+void initializeQueue()
+{
+    front = -1;
+    rear = -1;
+}
+
+int size()
+{
+    if (isEmpty())
+        return 0;
+    else
+        return rear - front + 1;
+}
+
+int isEmpty()
+{
+    if (front == -1 || front == rear + 1)
+        return 1;
+    else
+        return 0;
+}
+
+int isFull()
+{
+    if (rear == Max - 1)
+        return 1;
+    else
+        return 0;
+}
+
+void insert(int x)
+{
+    if (isFull())
+    {
+        printf("Queue Overflow\n");
+        return;
+    }
+
+    if (front == -1)
+        front = 0;
+
+    rear = rear + 1;
+    a[rear] = x;
+}
+
+int deleteElement()
+{
+    int x;
+
+    if (isEmpty())
+    {
+        printf("Queue Underflow\n");
+        exit(1);
+    }
+
+    x = a[front];
+    front = front + 1;
+    return x;
+}
+
+int peek()
+{
+    if (isEmpty())
+    {
+        printf("Queue Underflow\n");
+        exit(1);
+    }
+
+    return a[front];
+}
+
+void display()
+{
+    int i;
+
+    if (isEmpty())
+    {
+        printf("Queue is empty\n");
+        return;
+    }
+
+    printf("Queue elements:\n");
+    for (i = front; i <= rear; i++)
+        printf("%d\n", a[i]);
+    printf("\n");
+}

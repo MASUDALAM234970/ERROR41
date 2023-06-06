@@ -1,0 +1,40 @@
+
+
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int fact(int n);
+
+int main() {
+    int n;
+    printf("\n\n Please ! give any integer number : ");
+    scanf("%d", &n);
+
+
+         /*  for(int i=1; i<=n; i++)
+
+           {
+                printf(" %d " ,fact(i));
+           }
+             */
+
+    printf("The factorial  %d!: %d \n\n",n, fact(n));
+
+
+    printf("Hello, my friend!\n");
+
+}
+
+int fact(int n)
+
+ {
+     //base_Case
+     if (n == 0 || n == 1)
+        return 1;
+
+        //Recurvesive case
+    return n * fact(n - 1);
+}

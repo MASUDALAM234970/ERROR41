@@ -1,0 +1,58 @@
+/*
+  Purpose : To implement a linear Searchging using a Array
+  Date    : 7 June 2023
+  Author  : Error41
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int Search(int arr[], int n, int target);
+
+int main()
+{
+    while (1)
+    {
+        int i, n, target, array[30], position;
+
+        printf("Enter the array size: ");
+        scanf("%d", &n);
+
+        printf("Enter the Array element: ");
+        for (i = 0; i < n; i++)
+        {
+            scanf("%d", &array[i]);
+        }
+
+        printf("Enter your target value: ");
+        scanf("%d", &target);
+        position = Search(array, n, target);
+
+        if (position == -1)
+        {
+            printf("%d not found in Array\n", target);
+        }
+        else
+        {
+            printf("%d find at position %d\n", target, position);
+        }
+
+        printf("\n\nHello my friend\n");
+    }
+    return 0;
+}
+
+int Search(int arr[], int n, int target)
+{
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        if (arr[i] == target)
+        {
+            return i + 1;
+        }
+    }
+
+    return -1;
+}

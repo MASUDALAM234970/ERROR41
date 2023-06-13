@@ -1,0 +1,44 @@
+
+/*
+  Purpose : To implement a Combination using an Recursive function
+  Date    : 7 June 2023
+  Author  : Error41
+ */
+
+
+
+#include <stdio.h>
+                                 //  for (int i=50; i<5; i++)
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n- 1); 5 4 3 2 1 0
+    }
+}
+
+int combination(int n, int r) {
+    if (n < r) {
+        printf("Invalid input: n should be greater than or equal to r.\n");
+        return -1;
+    } else {
+        return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+}
+
+int main() {
+    int n, r;
+
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+
+    printf("Enter the value of r: ");
+    scanf("%d", &r);
+
+    int result = combination(n, r);
+    if (result != -1) {
+        printf("Combination of %dC%d = %d\n", n, r, result);
+    }
+
+    return 0;
+}

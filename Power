@@ -1,0 +1,31 @@
+/*
+  Purpose : To implement  nth power calculation using Recursive funtion
+  Date    : 6 June 2023
+  Author  : Error-41
+ */
+#include <stdio.h>
+
+ float  power(float x, int n) {
+    if ( n== 0) {
+        return 1;
+    }
+
+    return x*power( x, n-1);
+
+}
+
+int main() {
+       float x;
+    int n;
+
+    printf("Enter the base: ");
+    scanf("%f", &x);
+
+    printf("Enter the exponent: ");
+    scanf("%d", &n);
+
+    float result = power(x, n);
+    printf(" %.3f ^ %d  Power of  : %.2f\n", x,n,result);
+
+    return 0;
+}
